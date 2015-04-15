@@ -11,6 +11,7 @@
 #import "M2Tile.h"
 #import "M2Scene.h"
 #import "M2ViewController.h"
+#import "Amplitude.h"
 
 /**
  * Helper function that checks the termination condition of either counting up or down.
@@ -54,6 +55,8 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 
 - (void)startNewSessionWithScene:(M2Scene *)scene
 {
+  [Amplitude logEvent:@"Start Game"];
+
   if (_grid) [_grid removeAllTilesAnimated:NO];
   if (!_grid || _grid.dimension != GSTATE.dimension) {
     _grid = [[M2Grid alloc] initWithDimension:GSTATE.dimension];
@@ -61,7 +64,7 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
   }
   
   [scene loadBoardWithGrid:_grid];
-  
+
   // Set the initial state for the game.
   _score = 0; _over = NO; _won = NO; _keepPlaying = NO;
 

@@ -7,12 +7,14 @@
 //
 
 #import "M2AppDelegate.h"
+#import "Amplitude.h"
 
 @implementation M2AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  return YES;
+    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
