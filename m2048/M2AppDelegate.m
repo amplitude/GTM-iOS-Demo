@@ -13,35 +13,130 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
-    return YES;
+  [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
+
+  // Add action for remind later.
+  UIMutableUserNotificationAction *laterAction = [[UIMutableUserNotificationAction alloc] init];
+  [laterAction setIdentifier:@"later_action_id"];
+  [laterAction setTitle:@"Later..."];
+  [laterAction setActivationMode:UIUserNotificationActivationModeBackground];
+
+  // Add action for play now.
+  UIMutableUserNotificationAction *playAction = [[UIMutableUserNotificationAction alloc] init];
+  [playAction setIdentifier:@"play_action_id"];
+  [playAction setTitle:@"Play Now!"];
+  [playAction setActivationMode:UIUserNotificationActivationModeForeground];
+
+  UIMutableUserNotificationCategory* category = [[UIMutableUserNotificationCategory alloc] init];
+  [category setIdentifier:@"reminder_category_id"];
+  [category setActions:@[laterAction, playAction] forContext:UIUserNotificationActionContextDefault];
+  NSSet* categories = [NSSet setWithArray:@[category]];
+
+  NSUInteger types = UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;
+  if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    NSLog(@"Requesting permission for push notifications..."); // iOS 8
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
+    [UIApplication.sharedApplication registerUserNotificationSettings:settings];
+  } else {
+    NSLog(@"Registering device for push notifications..."); // iOS 7 and earlier
+    [UIApplication.sharedApplication registerForRemoteNotificationTypes:types];
+  }
+
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-  // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-  // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-  // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-  // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+  [self sendReminderNotification:5];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-  // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-  // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-  // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#pragma mark - Push Notifications
+
+- (void)sendReminderNotification:(long)delay
+{
+  // Schedule reminder local notification.
+  long score = (long)[Settings integerForKey:@"Best Score"];
+  UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+  localNotification.alertBody = [NSString stringWithFormat:@"You got all the way to %ld points. Play again and go higher!", score];
+  localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+  localNotification.category = @"reminder_category_id";
+  localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:delay];
+  localNotification.timeZone = [NSTimeZone defaultTimeZone];
+  [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+- (void)application:(UIApplication *)application
+        didRegisterUserNotificationSettings:(UIUserNotificationSettings *)settings
+{
+    NSLog(@"Registering device for push notifications..."); // iOS 8
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application
+        didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token
+{
+    NSLog(@"Registration successful, bundle identifier: %@, device token: %@",
+          [NSBundle.mainBundle bundleIdentifier], token);
+}
+
+- (void)application:(UIApplication *)application
+        didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Failed to register: %@", error);
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier
+        forRemoteNotification:(NSDictionary *)notification completionHandler:(void(^)())completionHandler
+{
+    NSLog(@"Received push notification: %@, identifier: %@", notification, identifier); // iOS 8
+    [Amplitude initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
+    [Amplitude logEvent:@"Opened Remote Notification"];
+
+    completionHandler();
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier
+        forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler
+{
+  if ([notification.category isEqualToString:@"reminder_category_id"])
+  {
+    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104" userId:nil startSession:YES];
+    [[Amplitude instance] logEvent:@"Local Notification Action" withEventProperties:@{@"Action": identifier}];
+
+    if ([identifier isEqualToString:@"later_action_id"])
+    {
+      [self sendReminderNotification:10];
+    }
+    else if ([identifier isEqualToString:@"play_action_id"])
+    {
+      NSLog(@"Play now was pressed");
+    }
+  }
+
+  completionHandler();
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+        fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
+{
+    NSLog(@"Received push notification: %@ %ld", userInfo[@"aps"], (long)application.applicationState); // iOS 7 and earlier
 }
 
 @end

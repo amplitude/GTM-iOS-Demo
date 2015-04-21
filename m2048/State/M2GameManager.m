@@ -36,7 +36,10 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
   
   /** True if user chooses to keep playing after winning. */
   BOOL _keepPlaying;
-  
+
+  /** The current level. */
+  NSInteger _level;
+
   /** The current score. */
   NSInteger _score;
   
@@ -91,11 +94,12 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 - (void)moveToDirection:(M2Direction)direction
 {
   __block M2Tile *tile = nil;
+  __block NSInteger nextLevel = _level;
   
   // Remember that the coordinate system of SpriteKit is the reverse of that of UIKit.
   BOOL reverse = direction == M2DirectionUp || direction == M2DirectionRight;
   NSInteger unit = reverse ? 1 : -1;
-  
+
   if (direction == M2DirectionUp || direction == M2DirectionDown) {
     [_grid forEach:^(M2Position position) {
       if ((tile = [_grid tileAtPosition:position])) {
@@ -122,6 +126,7 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
             }
             
             if (level) {
+              nextLevel = MAX(level, nextLevel);
               target = position.x;
               _pendingScore = [GSTATE valueForLevel:level];
             }
@@ -162,6 +167,7 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
             }
             
             if (level) {
+              nextLevel = MAX(level, nextLevel);
               target = position.y;
               _pendingScore = [GSTATE valueForLevel:level];
             }
@@ -193,7 +199,17 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
   
   // Increment score.
   [self materializePendingScore];
-  
+
+  // Update current level.
+  if (_level != nextLevel) {
+    [[Amplitude instance] setUserProperties:@{@"level": [NSNumber numberWithUnsignedInteger:_level]}];
+    [[Amplitude instance] logEvent:@"Level Up" withEventProperties:@{
+      @"score": [NSNumber numberWithUnsignedInteger:_score],
+      @"level": [NSNumber numberWithUnsignedInteger:_level]
+    }];
+  }
+  _level = nextLevel;
+
   // Check post-move status.
   if (!_keepPlaying && _won) {
     // We set `keepPlaying` to YES. If the user decides not to keep playing,
@@ -239,6 +255,10 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
   return [_grid hasAvailableCells] || [self adjacentMatchesAvailable];
 }
 
+- (NSUInteger)currentLevel
+{
+    return _level;
+}
 
 /**
  * Whether there are adjacent matches available.

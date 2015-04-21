@@ -35,4 +35,13 @@ typedef NS_ENUM(NSInteger, M2Direction) {
  */
 - (void)moveToDirection:(M2Direction)direction;
 
+/**
+ * Which level the game has reached.
+ *
+ * The maximum level of any tile on the current board.
+ *
+ * @return the current max level of any tile.
+ */
+- (NSUInteger)currentLevel;
+
 @end
