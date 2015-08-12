@@ -106,8 +106,8 @@
         forRemoteNotification:(NSDictionary *)notification completionHandler:(void(^)())completionHandler
 {
     NSLog(@"Received push notification: %@, identifier: %@", notification, identifier); // iOS 8
-    [Amplitude initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
-    [Amplitude logEvent:@"Opened Remote Notification"];
+    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
+    [[Amplitude instance] logEvent:@"Opened Remote Notification"];
 
     completionHandler();
 }
@@ -117,7 +117,7 @@
 {
   if ([notification.category isEqualToString:@"reminder_category_id"])
   {
-    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104" userId:nil startSession:YES];
+    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104" userId:nil];
     [[Amplitude instance] logEvent:@"Local Notification Action" withEventProperties:@{@"Action": identifier}];
 
     if ([identifier isEqualToString:@"later_action_id"])

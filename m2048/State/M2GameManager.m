@@ -58,7 +58,7 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 
 - (void)startNewSessionWithScene:(M2Scene *)scene
 {
-  [Amplitude logEvent:@"Start Game"];
+  [[Amplitude instance] logEvent:@"Start Game"];
 
   if (_grid) [_grid removeAllTilesAnimated:NO];
   if (!_grid || _grid.dimension != GSTATE.dimension) {
