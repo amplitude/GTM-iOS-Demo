@@ -1,10 +1,10 @@
 PODS:
-  - Amplitude-iOS (2.5.1)
+  - Amplitude-iOS (3.0.0)
 
 DEPENDENCIES:
-  - Amplitude-iOS (~> 2.5)
+  - Amplitude-iOS (~> 3.0)
 
 SPEC CHECKSUMS:
-  Amplitude-iOS: 1108012e40096d339d768cb8a6d79c774f47da2c
+  Amplitude-iOS: 07875b822c2c935ea7f8021830d375ed4d812d31
 
 COCOAPODS: 0.38.2
