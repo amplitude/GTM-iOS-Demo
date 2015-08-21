@@ -7,208 +7,225 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EF4F6916427CB468B7B1FDA1DD88324 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D1A97455B5209F56E5C48FAD29DB83 /* Foundation.framework */; };
-		19F739862E5A9EE5FA33B8635FB9B52F /* Amplitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A719E8B7C2D80D433A018D2C2674DBF /* Amplitude.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		1EBBDB37134FFF7DFAF2C34677836E80 /* AMPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A72479B4068B57756B085CDFEF5BA9 /* AMPConstants.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		34F33F58F3825B345FE9112EF97E02E0 /* AMPConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A2F158233BB6B4341E9E8FD69842639 /* AMPConstants.h */; };
-		5ED025567A6F7E67CCBD03F247B81CBE /* AMPARCMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 26C6F211A8F129FC032956431D88E9C8 /* AMPARCMacros.h */; };
-		6A34C3D6884CFD16C92DE7F1B352B924 /* AMPDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D02DC7AE4BE594BC419DAAE22F1E8182 /* AMPDeviceInfo.h */; };
-		6EC483C27CDB925C04A4729B0DD0C2B3 /* Pods-m2048-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A81E007308C6CDBAD062683CD04F72 /* Pods-m2048-dummy.m */; };
-		8D8387F3C4484C5F6A552CA3C17E174E /* Amplitude-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE598DDFB5946B3EEC0043A526F6CC70 /* Amplitude-iOS-dummy.m */; };
-		9EC06529B53E436F880321B7AE61641B /* Amplitude.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3E2ECE1BBA3397578C6F28542C1D33 /* Amplitude.h */; };
-		9F87B0C7CFF502883B8DB2569555FEAE /* AMPLocationManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7779F784D677A3E34D47178251F321 /* AMPLocationManagerDelegate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A196407FE2CAA7467F10AE8377D78706 /* AMPURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = D10C8D5CE3EA2FC6BDE3AD520178957D /* AMPURLConnection.h */; };
-		A5748A21BC91541258D071BA03222451 /* AMPLocationManagerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E8E0010364FE1DA3B00F5ED87387CD3 /* AMPLocationManagerDelegate.h */; };
-		BFC0F017D1A055AEADB748EAAC047448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D1A97455B5209F56E5C48FAD29DB83 /* Foundation.framework */; };
-		CBE3AE8C51EF5CE884CCFA91F75FC297 /* AMPDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C19489D528D8EFAA490C5CA9006563C /* AMPDeviceInfo.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		D618CFDC5782F2E29ECB1DBF30ECF8C6 /* Amplitude+SSLPinning.h in Headers */ = {isa = PBXBuildFile; fileRef = 08A29AC137450C5358737B1C0F8C6003 /* Amplitude+SSLPinning.h */; };
-		E9E2473770E685B001D15A6821038E47 /* AMPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0FE2B318150345E2BFE8DE65DCD00F /* AMPURLConnection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1C4325D37001EF69D8ED2FCE0D5C9E80 /* Amplitude-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC20BE67B3BAF8330B002E6BC52DF63A /* Amplitude-iOS-dummy.m */; };
+		1CDE830BE73328142D20AC02BE92D96A /* Amplitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 23850A92CFE0532EF4749E3582329FB7 /* Amplitude.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2B2CD9EC3F08812C95D340B730B724A3 /* Amplitude.h in Headers */ = {isa = PBXBuildFile; fileRef = 74783FD78CD515BCAFCB41572A5CFF33 /* Amplitude.h */; };
+		442F17184C01B0C531FACC4DFA5E0748 /* AMPURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = BA0185176E2919AA166639AB1A81D2E2 /* AMPURLConnection.h */; };
+		519EF7880668C14BD1D844AB2F8CE906 /* AMPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D927FBBCA0B7AACABA6A2F76030BB65 /* AMPURLConnection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5A6172272992A46255B276B577F308C4 /* AMPLocationManagerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A2ABFDCF1591DD743269D393FF5B350 /* AMPLocationManagerDelegate.h */; };
+		5D995FB7CAF198561DFDDFCC8CDA2E4C /* AMPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 969DAF3A63599B5406B8891C4AC93123 /* AMPConstants.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		76A798E7B9E26159F490B61EB6E5FA82 /* AMPConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D8201E7573501BBFFC724E3FB8467466 /* AMPConstants.h */; };
+		7989AA6AA1F8DCF8DE581BE600DCEBE9 /* AMPARCMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B63426784C60889C678AA8A9A5C41C5C /* AMPARCMacros.h */; };
+		9B44F301D09B6AF1EAF682C20D7EA1CA /* Pods-m2048-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C295A33FE82D88D94A4A1DAD7198F73 /* Pods-m2048-dummy.m */; };
+		AB44B2311999AB85C4175B8CACAFA9A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7697652CB23696FC8F190FF06927B71 /* Foundation.framework */; };
+		B4D1CE7C7E25C780DFF1E25B8D2FBE95 /* AMPDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DB6C146D18CF13240F45A901229101A /* AMPDeviceInfo.h */; };
+		BCBE3C527D86772775E73B2A2C9CC857 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7697652CB23696FC8F190FF06927B71 /* Foundation.framework */; };
+		CE3EE1B191786E2E41204EDAB21570E9 /* AMPLocationManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A86E3B836AA5C0AA9D2DDE202F90460B /* AMPLocationManagerDelegate.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F8980EB35FDF6953C84E5F47995C71C4 /* Amplitude+SSLPinning.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C009AFAA05EC8844AED23649C7B1729 /* Amplitude+SSLPinning.h */; };
+		F90CD6CE2CE3DD49346A4E0A0CBAF1EE /* AMPDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 726E116B649FDD189EBC89758EF78560 /* AMPDeviceInfo.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		39A05B5B4CCD461A2CDA98E668978A20 /* PBXContainerItemProxy */ = {
+		66B90BE4C12ED118D90C8FF5F85AAC07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8E11EDC131DCF0DD8B551B50660B5B0A;
+			remoteGlobalIDString = CC7B01DFEFBF02D77D9901D769E47313;
 			remoteInfo = "Amplitude-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06D1A97455B5209F56E5C48FAD29DB83 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		08A29AC137450C5358737B1C0F8C6003 /* Amplitude+SSLPinning.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Amplitude+SSLPinning.h"; path = "Amplitude/Amplitude+SSLPinning.h"; sourceTree = "<group>"; };
-		0C19489D528D8EFAA490C5CA9006563C /* AMPDeviceInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPDeviceInfo.m; path = Amplitude/AMPDeviceInfo.m; sourceTree = "<group>"; };
-		0CBA60D4D34CE6B5451820A602AFB5EF /* Pods-m2048-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-m2048-resources.sh"; sourceTree = "<group>"; };
-		0DEDFB353A084A39B853301B3731441F /* libAmplitude-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libAmplitude-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13A81E007308C6CDBAD062683CD04F72 /* Pods-m2048-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-m2048-dummy.m"; sourceTree = "<group>"; };
-		148A8669589E6A0DB3BDDCD243E32586 /* Amplitude-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Amplitude-iOS-prefix.pch"; sourceTree = "<group>"; };
-		165C5182EF7B43D387AC8CEB09A39EF8 /* libPods-m2048.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-m2048.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		26C6F211A8F129FC032956431D88E9C8 /* AMPARCMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPARCMacros.h; path = Amplitude/AMPARCMacros.h; sourceTree = "<group>"; };
-		281D27D17937F18DF3F6C8E9EB482EC7 /* Pods-m2048.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-m2048.debug.xcconfig"; sourceTree = "<group>"; };
-		40B21C2ECB4C927AE5C1252086A2C1FA /* Pods-m2048-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-m2048-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4A2F158233BB6B4341E9E8FD69842639 /* AMPConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPConstants.h; path = Amplitude/AMPConstants.h; sourceTree = "<group>"; };
-		4F7779F784D677A3E34D47178251F321 /* AMPLocationManagerDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPLocationManagerDelegate.m; path = Amplitude/AMPLocationManagerDelegate.m; sourceTree = "<group>"; };
-		5E8E0010364FE1DA3B00F5ED87387CD3 /* AMPLocationManagerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPLocationManagerDelegate.h; path = Amplitude/AMPLocationManagerDelegate.h; sourceTree = "<group>"; };
-		7B234D2C2637A5A9799E3FE3453D1E29 /* Pods-m2048-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-m2048-acknowledgements.plist"; sourceTree = "<group>"; };
-		8BA90679E34AF0685073FC0CB49E5586 /* Amplitude-iOS-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Amplitude-iOS-Private.xcconfig"; sourceTree = "<group>"; };
-		9A0FE2B318150345E2BFE8DE65DCD00F /* AMPURLConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPURLConnection.m; path = Amplitude/AMPURLConnection.m; sourceTree = "<group>"; };
-		9A719E8B7C2D80D433A018D2C2674DBF /* Amplitude.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Amplitude.m; path = Amplitude/Amplitude.m; sourceTree = "<group>"; };
-		C88113A79685B4EFEE7BAD12896829F7 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		CD3E2ECE1BBA3397578C6F28542C1D33 /* Amplitude.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Amplitude.h; path = Amplitude/Amplitude.h; sourceTree = "<group>"; };
-		D02DC7AE4BE594BC419DAAE22F1E8182 /* AMPDeviceInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPDeviceInfo.h; path = Amplitude/AMPDeviceInfo.h; sourceTree = "<group>"; };
-		D10C8D5CE3EA2FC6BDE3AD520178957D /* AMPURLConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPURLConnection.h; path = Amplitude/AMPURLConnection.h; sourceTree = "<group>"; };
-		DE598DDFB5946B3EEC0043A526F6CC70 /* Amplitude-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Amplitude-iOS-dummy.m"; sourceTree = "<group>"; };
-		E90D634FE0851735051E922685079DC3 /* Amplitude-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Amplitude-iOS.xcconfig"; sourceTree = "<group>"; };
-		F0255EBAF7E0A700A28EDE85129C505F /* Pods-m2048.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-m2048.release.xcconfig"; sourceTree = "<group>"; };
-		F5A72479B4068B57756B085CDFEF5BA9 /* AMPConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPConstants.m; path = Amplitude/AMPConstants.m; sourceTree = "<group>"; };
+		23850A92CFE0532EF4749E3582329FB7 /* Amplitude.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Amplitude.m; path = Amplitude/Amplitude.m; sourceTree = "<group>"; };
+		3CADA01BA36574A8C29CAA4948249FA2 /* Pods-m2048-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-m2048-acknowledgements.plist"; sourceTree = "<group>"; };
+		4A2ABFDCF1591DD743269D393FF5B350 /* AMPLocationManagerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPLocationManagerDelegate.h; path = Amplitude/AMPLocationManagerDelegate.h; sourceTree = "<group>"; };
+		4DB6C146D18CF13240F45A901229101A /* AMPDeviceInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPDeviceInfo.h; path = Amplitude/AMPDeviceInfo.h; sourceTree = "<group>"; };
+		5C009AFAA05EC8844AED23649C7B1729 /* Amplitude+SSLPinning.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Amplitude+SSLPinning.h"; path = "Amplitude/Amplitude+SSLPinning.h"; sourceTree = "<group>"; };
+		64B159C0EE86E97100D3E494D0D426A3 /* Amplitude-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Amplitude-iOS.xcconfig"; sourceTree = "<group>"; };
+		723ED31EB3171F083701C50D6CA4EDC0 /* Amplitude-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Amplitude-iOS-prefix.pch"; sourceTree = "<group>"; };
+		726E116B649FDD189EBC89758EF78560 /* AMPDeviceInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPDeviceInfo.m; path = Amplitude/AMPDeviceInfo.m; sourceTree = "<group>"; };
+		72F63FC4FF599D61B8BF3E9915415DD3 /* libPods-m2048.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-m2048.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74783FD78CD515BCAFCB41572A5CFF33 /* Amplitude.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Amplitude.h; path = Amplitude/Amplitude.h; sourceTree = "<group>"; };
+		7D927FBBCA0B7AACABA6A2F76030BB65 /* AMPURLConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPURLConnection.m; path = Amplitude/AMPURLConnection.m; sourceTree = "<group>"; };
+		8580066FDE327B9946F2336D910C37AB /* Pods-m2048.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-m2048.release.xcconfig"; sourceTree = "<group>"; };
+		8EB28B0B54803A260EAFC2AA04B44F0B /* Pods-m2048.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-m2048.debug.xcconfig"; sourceTree = "<group>"; };
+		969DAF3A63599B5406B8891C4AC93123 /* AMPConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPConstants.m; path = Amplitude/AMPConstants.m; sourceTree = "<group>"; };
+		9C295A33FE82D88D94A4A1DAD7198F73 /* Pods-m2048-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-m2048-dummy.m"; sourceTree = "<group>"; };
+		A86E3B836AA5C0AA9D2DDE202F90460B /* AMPLocationManagerDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AMPLocationManagerDelegate.m; path = Amplitude/AMPLocationManagerDelegate.m; sourceTree = "<group>"; };
+		ABA41A235E3F390129D497FE6E3AD281 /* Pods-m2048-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-m2048-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AC20BE67B3BAF8330B002E6BC52DF63A /* Amplitude-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Amplitude-iOS-dummy.m"; sourceTree = "<group>"; };
+		B55313DD1126BF0269F822F128D13C14 /* libAmplitude-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libAmplitude-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B63426784C60889C678AA8A9A5C41C5C /* AMPARCMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPARCMacros.h; path = Amplitude/AMPARCMacros.h; sourceTree = "<group>"; };
+		B7697652CB23696FC8F190FF06927B71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		BA0185176E2919AA166639AB1A81D2E2 /* AMPURLConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPURLConnection.h; path = Amplitude/AMPURLConnection.h; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D426F9C8B544B7FA569C21811BF77FE7 /* Pods-m2048-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-m2048-resources.sh"; sourceTree = "<group>"; };
+		D8201E7573501BBFFC724E3FB8467466 /* AMPConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMPConstants.h; path = Amplitude/AMPConstants.h; sourceTree = "<group>"; };
+		FFC0A89A1210703E04C40B531B069304 /* Amplitude-iOS-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Amplitude-iOS-Private.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		31770C064145E0861B5DEF52F8FC796A /* Frameworks */ = {
+		06F5773C8F90A1BAB260B1C68FAA32F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFC0F017D1A055AEADB748EAAC047448 /* Foundation.framework in Frameworks */,
+				BCBE3C527D86772775E73B2A2C9CC857 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92774F7A089F71905D70CDFC996DF508 /* Frameworks */ = {
+		C4685FBC82431147453C2F5B896ADC84 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EF4F6916427CB468B7B1FDA1DD88324 /* Foundation.framework in Frameworks */,
+				AB44B2311999AB85C4175B8CACAFA9A7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		214CB7E2D1CEE8CC31C8126DEBA0E882 /* Support Files */ = {
+		0A9734AC6E725606CE4311569B07A840 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E90D634FE0851735051E922685079DC3 /* Amplitude-iOS.xcconfig */,
-				8BA90679E34AF0685073FC0CB49E5586 /* Amplitude-iOS-Private.xcconfig */,
-				DE598DDFB5946B3EEC0043A526F6CC70 /* Amplitude-iOS-dummy.m */,
-				148A8669589E6A0DB3BDDCD243E32586 /* Amplitude-iOS-prefix.pch */,
+				64B159C0EE86E97100D3E494D0D426A3 /* Amplitude-iOS.xcconfig */,
+				FFC0A89A1210703E04C40B531B069304 /* Amplitude-iOS-Private.xcconfig */,
+				AC20BE67B3BAF8330B002E6BC52DF63A /* Amplitude-iOS-dummy.m */,
+				723ED31EB3171F083701C50D6CA4EDC0 /* Amplitude-iOS-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Amplitude-iOS";
 			sourceTree = "<group>";
 		};
-		33A2DFA941E11F4B5B7E005D2FE0A3E5 /* iOS */ = {
+		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				06D1A97455B5209F56E5C48FAD29DB83 /* Foundation.framework */,
+				B7697652CB23696FC8F190FF06927B71 /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5E1F3384B1B39575144FEBFCF3210CCC /* Frameworks */ = {
+		56690CEACF94419AECCD4F44AA648BAE /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				33A2DFA941E11F4B5B7E005D2FE0A3E5 /* iOS */,
+				D6207BEFF994D0E0C909DC516BA2E4BC /* Pods-m2048 */,
 			);
-			name = Frameworks;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6CD54A8C5C6DD55802BE1D444FEA5CC6 /* Amplitude-iOS */ = {
+		68830BD84CA4DC1798BD67A64BF338F2 /* Amplitude-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				26C6F211A8F129FC032956431D88E9C8 /* AMPARCMacros.h */,
-				4A2F158233BB6B4341E9E8FD69842639 /* AMPConstants.h */,
-				F5A72479B4068B57756B085CDFEF5BA9 /* AMPConstants.m */,
-				D02DC7AE4BE594BC419DAAE22F1E8182 /* AMPDeviceInfo.h */,
-				0C19489D528D8EFAA490C5CA9006563C /* AMPDeviceInfo.m */,
-				5E8E0010364FE1DA3B00F5ED87387CD3 /* AMPLocationManagerDelegate.h */,
-				4F7779F784D677A3E34D47178251F321 /* AMPLocationManagerDelegate.m */,
-				D10C8D5CE3EA2FC6BDE3AD520178957D /* AMPURLConnection.h */,
-				9A0FE2B318150345E2BFE8DE65DCD00F /* AMPURLConnection.m */,
-				CD3E2ECE1BBA3397578C6F28542C1D33 /* Amplitude.h */,
-				9A719E8B7C2D80D433A018D2C2674DBF /* Amplitude.m */,
-				08A29AC137450C5358737B1C0F8C6003 /* Amplitude+SSLPinning.h */,
-				214CB7E2D1CEE8CC31C8126DEBA0E882 /* Support Files */,
+				B63426784C60889C678AA8A9A5C41C5C /* AMPARCMacros.h */,
+				D8201E7573501BBFFC724E3FB8467466 /* AMPConstants.h */,
+				969DAF3A63599B5406B8891C4AC93123 /* AMPConstants.m */,
+				4DB6C146D18CF13240F45A901229101A /* AMPDeviceInfo.h */,
+				726E116B649FDD189EBC89758EF78560 /* AMPDeviceInfo.m */,
+				4A2ABFDCF1591DD743269D393FF5B350 /* AMPLocationManagerDelegate.h */,
+				A86E3B836AA5C0AA9D2DDE202F90460B /* AMPLocationManagerDelegate.m */,
+				BA0185176E2919AA166639AB1A81D2E2 /* AMPURLConnection.h */,
+				7D927FBBCA0B7AACABA6A2F76030BB65 /* AMPURLConnection.m */,
+				74783FD78CD515BCAFCB41572A5CFF33 /* Amplitude.h */,
+				23850A92CFE0532EF4749E3582329FB7 /* Amplitude.m */,
+				5C009AFAA05EC8844AED23649C7B1729 /* Amplitude+SSLPinning.h */,
+				0A9734AC6E725606CE4311569B07A840 /* Support Files */,
 			);
 			path = "Amplitude-iOS";
-			sourceTree = "<group>";
-		};
-		718BB2CCA32171ABDA1810A991FD3109 /* Pods-m2048 */ = {
-			isa = PBXGroup;
-			children = (
-				40B21C2ECB4C927AE5C1252086A2C1FA /* Pods-m2048-acknowledgements.markdown */,
-				7B234D2C2637A5A9799E3FE3453D1E29 /* Pods-m2048-acknowledgements.plist */,
-				13A81E007308C6CDBAD062683CD04F72 /* Pods-m2048-dummy.m */,
-				0CBA60D4D34CE6B5451820A602AFB5EF /* Pods-m2048-resources.sh */,
-				281D27D17937F18DF3F6C8E9EB482EC7 /* Pods-m2048.debug.xcconfig */,
-				F0255EBAF7E0A700A28EDE85129C505F /* Pods-m2048.release.xcconfig */,
-			);
-			name = "Pods-m2048";
-			path = "Target Support Files/Pods-m2048";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				C88113A79685B4EFEE7BAD12896829F7 /* Podfile */,
-				5E1F3384B1B39575144FEBFCF3210CCC /* Frameworks */,
-				FCC6F965540745142F6675EF7C9E0E2D /* Pods */,
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				8D92D66C72387AE3FA6C1608BA59CB31 /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
-				848A6CE8DA3504A266A17F635DC3683A /* Targets Support Files */,
+				56690CEACF94419AECCD4F44AA648BAE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		848A6CE8DA3504A266A17F635DC3683A /* Targets Support Files */ = {
+		8D92D66C72387AE3FA6C1608BA59CB31 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				718BB2CCA32171ABDA1810A991FD3109 /* Pods-m2048 */,
+				68830BD84CA4DC1798BD67A64BF338F2 /* Amplitude-iOS */,
 			);
-			name = "Targets Support Files";
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53F661C0CA7190D2CF05023FB33D61E4 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0DEDFB353A084A39B853301B3731441F /* libAmplitude-iOS.a */,
-				165C5182EF7B43D387AC8CEB09A39EF8 /* libPods-m2048.a */,
+				B55313DD1126BF0269F822F128D13C14 /* libAmplitude-iOS.a */,
+				72F63FC4FF599D61B8BF3E9915415DD3 /* libPods-m2048.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FCC6F965540745142F6675EF7C9E0E2D /* Pods */ = {
+		D6207BEFF994D0E0C909DC516BA2E4BC /* Pods-m2048 */ = {
 			isa = PBXGroup;
 			children = (
-				6CD54A8C5C6DD55802BE1D444FEA5CC6 /* Amplitude-iOS */,
+				ABA41A235E3F390129D497FE6E3AD281 /* Pods-m2048-acknowledgements.markdown */,
+				3CADA01BA36574A8C29CAA4948249FA2 /* Pods-m2048-acknowledgements.plist */,
+				9C295A33FE82D88D94A4A1DAD7198F73 /* Pods-m2048-dummy.m */,
+				D426F9C8B544B7FA569C21811BF77FE7 /* Pods-m2048-resources.sh */,
+				8EB28B0B54803A260EAFC2AA04B44F0B /* Pods-m2048.debug.xcconfig */,
+				8580066FDE327B9946F2336D910C37AB /* Pods-m2048.release.xcconfig */,
 			);
-			name = Pods;
+			name = "Pods-m2048";
+			path = "Target Support Files/Pods-m2048";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B25BBBBF0E377A963F5DAE0A17C85507 /* Headers */ = {
+		34212686C9435BBFC510A848CD57E954 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ED025567A6F7E67CCBD03F247B81CBE /* AMPARCMacros.h in Headers */,
-				34F33F58F3825B345FE9112EF97E02E0 /* AMPConstants.h in Headers */,
-				6A34C3D6884CFD16C92DE7F1B352B924 /* AMPDeviceInfo.h in Headers */,
-				A5748A21BC91541258D071BA03222451 /* AMPLocationManagerDelegate.h in Headers */,
-				A196407FE2CAA7467F10AE8377D78706 /* AMPURLConnection.h in Headers */,
-				D618CFDC5782F2E29ECB1DBF30ECF8C6 /* Amplitude+SSLPinning.h in Headers */,
-				9EC06529B53E436F880321B7AE61641B /* Amplitude.h in Headers */,
+				7989AA6AA1F8DCF8DE581BE600DCEBE9 /* AMPARCMacros.h in Headers */,
+				76A798E7B9E26159F490B61EB6E5FA82 /* AMPConstants.h in Headers */,
+				B4D1CE7C7E25C780DFF1E25B8D2FBE95 /* AMPDeviceInfo.h in Headers */,
+				5A6172272992A46255B276B577F308C4 /* AMPLocationManagerDelegate.h in Headers */,
+				442F17184C01B0C531FACC4DFA5E0748 /* AMPURLConnection.h in Headers */,
+				F8980EB35FDF6953C84E5F47995C71C4 /* Amplitude+SSLPinning.h in Headers */,
+				2B2CD9EC3F08812C95D340B730B724A3 /* Amplitude.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8E11EDC131DCF0DD8B551B50660B5B0A /* Amplitude-iOS */ = {
+		81E6E6E5AB6391CD56A7651E320AF853 /* Pods-m2048 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F7528A4E47E9D0E0976B687A749DBB8 /* Build configuration list for PBXNativeTarget "Amplitude-iOS" */;
+			buildConfigurationList = F65C228C1267A57A2D4138715FC58F94 /* Build configuration list for PBXNativeTarget "Pods-m2048" */;
 			buildPhases = (
-				CE9EC91E814B5C78E8A6FD550D602044 /* Sources */,
-				31770C064145E0861B5DEF52F8FC796A /* Frameworks */,
-				B25BBBBF0E377A963F5DAE0A17C85507 /* Headers */,
+				E5652EEC194970DB46D727961C4F6163 /* Sources */,
+				C4685FBC82431147453C2F5B896ADC84 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65060A034A6E0294790564DFF7DB8067 /* PBXTargetDependency */,
+			);
+			name = "Pods-m2048";
+			productName = "Pods-m2048";
+			productReference = 72F63FC4FF599D61B8BF3E9915415DD3 /* libPods-m2048.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		CC7B01DFEFBF02D77D9901D769E47313 /* Amplitude-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 723E41AA95DDF32F34E33B0CAFE4B78A /* Build configuration list for PBXNativeTarget "Amplitude-iOS" */;
+			buildPhases = (
+				71F3BC0AEC738D4E2EE4BD96BCD45DC9 /* Sources */,
+				06F5773C8F90A1BAB260B1C68FAA32F5 /* Frameworks */,
+				34212686C9435BBFC510A848CD57E954 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -216,24 +233,7 @@
 			);
 			name = "Amplitude-iOS";
 			productName = "Amplitude-iOS";
-			productReference = 0DEDFB353A084A39B853301B3731441F /* libAmplitude-iOS.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		A426765392D27900C73CD01006FAEF24 /* Pods-m2048 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 94FFD5F50A9DEDDAB1EE20693471413C /* Build configuration list for PBXNativeTarget "Pods-m2048" */;
-			buildPhases = (
-				B885E3DCA14A4D7F5E68A690D1713E89 /* Sources */,
-				92774F7A089F71905D70CDFC996DF508 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E0475C64494C54ECE9954FA1724ED8FF /* PBXTargetDependency */,
-			);
-			name = "Pods-m2048";
-			productName = "Pods-m2048";
-			productReference = 165C5182EF7B43D387AC8CEB09A39EF8 /* libPods-m2048.a */;
+			productReference = B55313DD1126BF0269F822F128D13C14 /* libAmplitude-iOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -257,49 +257,99 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8E11EDC131DCF0DD8B551B50660B5B0A /* Amplitude-iOS */,
-				A426765392D27900C73CD01006FAEF24 /* Pods-m2048 */,
+				CC7B01DFEFBF02D77D9901D769E47313 /* Amplitude-iOS */,
+				81E6E6E5AB6391CD56A7651E320AF853 /* Pods-m2048 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B885E3DCA14A4D7F5E68A690D1713E89 /* Sources */ = {
+		71F3BC0AEC738D4E2EE4BD96BCD45DC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EC483C27CDB925C04A4729B0DD0C2B3 /* Pods-m2048-dummy.m in Sources */,
+				5D995FB7CAF198561DFDDFCC8CDA2E4C /* AMPConstants.m in Sources */,
+				F90CD6CE2CE3DD49346A4E0A0CBAF1EE /* AMPDeviceInfo.m in Sources */,
+				CE3EE1B191786E2E41204EDAB21570E9 /* AMPLocationManagerDelegate.m in Sources */,
+				519EF7880668C14BD1D844AB2F8CE906 /* AMPURLConnection.m in Sources */,
+				1C4325D37001EF69D8ED2FCE0D5C9E80 /* Amplitude-iOS-dummy.m in Sources */,
+				1CDE830BE73328142D20AC02BE92D96A /* Amplitude.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE9EC91E814B5C78E8A6FD550D602044 /* Sources */ = {
+		E5652EEC194970DB46D727961C4F6163 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EBBDB37134FFF7DFAF2C34677836E80 /* AMPConstants.m in Sources */,
-				CBE3AE8C51EF5CE884CCFA91F75FC297 /* AMPDeviceInfo.m in Sources */,
-				9F87B0C7CFF502883B8DB2569555FEAE /* AMPLocationManagerDelegate.m in Sources */,
-				E9E2473770E685B001D15A6821038E47 /* AMPURLConnection.m in Sources */,
-				8D8387F3C4484C5F6A552CA3C17E174E /* Amplitude-iOS-dummy.m in Sources */,
-				19F739862E5A9EE5FA33B8635FB9B52F /* Amplitude.m in Sources */,
+				9B44F301D09B6AF1EAF682C20D7EA1CA /* Pods-m2048-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E0475C64494C54ECE9954FA1724ED8FF /* PBXTargetDependency */ = {
+		65060A034A6E0294790564DFF7DB8067 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Amplitude-iOS";
-			target = 8E11EDC131DCF0DD8B551B50660B5B0A /* Amplitude-iOS */;
-			targetProxy = 39A05B5B4CCD461A2CDA98E668978A20 /* PBXContainerItemProxy */;
+			target = CC7B01DFEFBF02D77D9901D769E47313 /* Amplitude-iOS */;
+			targetProxy = 66B90BE4C12ED118D90C8FF5F85AAC07 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		02B649FFE5BB143CCED8C2600BA82CF3 /* Release */ = {
+		052A17875CB827423D627183396CEB60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BA90679E34AF0685073FC0CB49E5586 /* Amplitude-iOS-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34711588ED5249D14374184ECB0ED4E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8580066FDE327B9946F2336D910C37AB /* Pods-m2048.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5D918A9F97381E6873B30B6B89978AA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFC0A89A1210703E04C40B531B069304 /* Amplitude-iOS-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Amplitude-iOS/Amplitude-iOS-prefix.pch";
@@ -313,7 +363,7 @@
 			};
 			name = Release;
 		};
-		3523159348E1035C58EF859238BFEDB0 /* Debug */ = {
+		B37F0F91F85060E28F1DAAB522DC7EC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -352,25 +402,9 @@
 			};
 			name = Debug;
 		};
-		382DDCC9262B133CEBEE114664B681D6 /* Release */ = {
+		EC0C836041EDFF56696A0E29991CDE8C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0255EBAF7E0A700A28EDE85129C505F /* Pods-m2048.release.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		5367B4AD32D052B8B7CC959ECD1F3600 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BA90679E34AF0685073FC0CB49E5586 /* Amplitude-iOS-Private.xcconfig */;
+			baseConfigurationReference = FFC0A89A1210703E04C40B531B069304 /* Amplitude-iOS-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Amplitude-iOS/Amplitude-iOS-prefix.pch";
@@ -384,43 +418,9 @@
 			};
 			name = Debug;
 		};
-		A88658A9552ACB0502744ED7A6EDBEFD /* Release */ = {
+		F09AB5F68E975CEBAC330DE5ABB95070 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E1E21C694A26390F9E2F4246AC90C43C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 281D27D17937F18DF3F6C8E9EB482EC7 /* Pods-m2048.debug.xcconfig */;
+			baseConfigurationReference = 8EB28B0B54803A260EAFC2AA04B44F0B /* Pods-m2048.debug.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -440,26 +440,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3523159348E1035C58EF859238BFEDB0 /* Debug */,
-				A88658A9552ACB0502744ED7A6EDBEFD /* Release */,
+				B37F0F91F85060E28F1DAAB522DC7EC1 /* Debug */,
+				052A17875CB827423D627183396CEB60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F7528A4E47E9D0E0976B687A749DBB8 /* Build configuration list for PBXNativeTarget "Amplitude-iOS" */ = {
+		723E41AA95DDF32F34E33B0CAFE4B78A /* Build configuration list for PBXNativeTarget "Amplitude-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5367B4AD32D052B8B7CC959ECD1F3600 /* Debug */,
-				02B649FFE5BB143CCED8C2600BA82CF3 /* Release */,
+				EC0C836041EDFF56696A0E29991CDE8C /* Debug */,
+				5D918A9F97381E6873B30B6B89978AA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94FFD5F50A9DEDDAB1EE20693471413C /* Build configuration list for PBXNativeTarget "Pods-m2048" */ = {
+		F65C228C1267A57A2D4138715FC58F94 /* Build configuration list for PBXNativeTarget "Pods-m2048" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1E21C694A26390F9E2F4246AC90C43C /* Debug */,
-				382DDCC9262B133CEBEE114664B681D6 /* Release */,
+				F09AB5F68E975CEBAC330DE5ABB95070 /* Debug */,
+				34711588ED5249D14374184ECB0ED4E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
