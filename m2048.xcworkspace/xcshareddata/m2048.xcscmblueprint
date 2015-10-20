@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6C29944B3854DE4B2B51F0E5621256D4BB50671E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6C29944B3854DE4B2B51F0E5621256D4BB50671E" : 0,
+    "8B3FCA06773311E05FC662092CB756E83CD1F40F" : 0,
+    "BA5484F6D6D365748014E98FA722AEED53849F89" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F9B1222D-E9C7-46BC-B49F-CBDD0387C4DB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6C29944B3854DE4B2B51F0E5621256D4BB50671E" : "iOS-Demo",
+    "8B3FCA06773311E05FC662092CB756E83CD1F40F" : "",
+    "BA5484F6D6D365748014E98FA722AEED53849F89" : "Amplitude-iOS"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "m2048",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "m2048.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:amplitude\/iOS-Demo",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C29944B3854DE4B2B51F0E5621256D4BB50671E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:amplitude\/Client-SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8B3FCA06773311E05FC662092CB756E83CD1F40F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:amplitude\/Amplitude-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BA5484F6D6D365748014E98FA722AEED53849F89"
+    }
+  ]
+}

@@ -12,6 +12,7 @@
 #import "M2Scene.h"
 #import "M2ViewController.h"
 #import "Amplitude.h"
+#import "AMPIdentify.h"
 
 /**
  * Helper function that checks the termination condition of either counting up or down.
@@ -202,7 +203,8 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 
   // Update current level.
   if (_level != nextLevel) {
-    [[Amplitude instance] setUserProperties:@{@"level": [NSNumber numberWithUnsignedInteger:_level]}];
+    AMPIdentify *identify = [[AMPIdentify identify] set:@"level" value: [NSNumber numberWithUnsignedInteger:_level]];
+    [[Amplitude instance] identify:identify];
     [[Amplitude instance] logEvent:@"Level Up" withEventProperties:@{
       @"score": [NSNumber numberWithUnsignedInteger:_score],
       @"level": [NSNumber numberWithUnsignedInteger:_level]

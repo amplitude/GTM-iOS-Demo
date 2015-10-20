@@ -13,6 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [Amplitude instance].trackingSessionEvents = YES;
   [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
 
   // Add action for remind later.
