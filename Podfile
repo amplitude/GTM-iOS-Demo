@@ -2,6 +2,6 @@
 platform :ios, '7.0'
 
 target 'm2048' do
-    pod 'Amplitude-iOS', '~> 3.2.0'
+    pod 'Amplitude-iOS', '~> 3.3.0'
 end
 
