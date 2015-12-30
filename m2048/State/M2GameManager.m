@@ -204,6 +204,7 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
   // Update current level.
   if (_level != nextLevel) {
     AMPIdentify *identify = [[AMPIdentify identify] set:@"level" value: [NSNumber numberWithUnsignedInteger:_level]];
+    [identify append:@"list" value:@"value"];
     [[Amplitude instance] identify:identify];
     [[Amplitude instance] logEvent:@"Level Up" withEventProperties:@{
       @"score": [NSNumber numberWithUnsignedInteger:_score],

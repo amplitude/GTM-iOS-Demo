@@ -1,15 +1,10 @@
 PODS:
-  - Amplitude-iOS (3.3.0):
-    - FMDB/standard (~> 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
+  - Amplitude-iOS (3.4.0)
 
 DEPENDENCIES:
-  - Amplitude-iOS (~> 3.3.0)
+  - Amplitude-iOS (~> 3.4.0)
 
 SPEC CHECKSUMS:
-  Amplitude-iOS: e105b18e8176de38be487b6885f73b8a7ee3b984
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  Amplitude-iOS: 3d0d5ff584896b629a4e38455e4bdcad0e2013dd
 
 COCOAPODS: 0.38.2

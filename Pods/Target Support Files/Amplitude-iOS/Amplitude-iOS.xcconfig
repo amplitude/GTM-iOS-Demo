@@ -1,0 +1,1 @@
+AMPLITUDE_IOS_OTHER_LDFLAGS = -l"sqlite3"
