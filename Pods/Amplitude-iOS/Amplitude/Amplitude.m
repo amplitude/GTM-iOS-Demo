@@ -5,10 +5,12 @@
 #define AMPLITUDE_DEBUG 0
 #endif
 
+#ifndef AMPLITUDE_LOG
 #if AMPLITUDE_DEBUG
 #   define AMPLITUDE_LOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
 #else
 #   define AMPLITUDE_LOG(...)
+#endif
 #endif
 
 
@@ -1138,6 +1140,12 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 - (void)setUserProperties:(NSDictionary*) userProperties replace:(BOOL) replace
 {
     [self setUserProperties:userProperties];
+}
+
+- (void)clearUserProperties
+{
+    AMPIdentify *identify = [[AMPIdentify identify] clearAll];
+    [self identify:identify];
 }
 
 - (void)setUserId:(NSString*) userId
