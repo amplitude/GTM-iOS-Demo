@@ -1,10 +1,16 @@
 PODS:
   - Amplitude-iOS (3.7.0)
+  - GoogleAnalytics (3.14.0)
+  - GoogleTagManager (3.15.0):
+    - GoogleAnalytics (= 3.14.0)
 
 DEPENDENCIES:
   - Amplitude-iOS (~> 3.7.0)
+  - GoogleTagManager (~> 3.15.0)
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 8bc8b9dc9c1898dbe5da541e21e8941ec085644f
+  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  GoogleTagManager: 39e4af1e9250e7817d328f690768e26afe560da0
 
 COCOAPODS: 0.39.0
