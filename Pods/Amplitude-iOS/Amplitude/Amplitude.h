@@ -3,6 +3,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AMPIdentify.h"
+#import "AMPRevenue.h"
 
 
 /*!
@@ -40,6 +41,8 @@
 @property (nonatomic, strong, readonly) NSString *apiKey;
 @property (nonatomic, strong, readonly) NSString *userId;
 @property (nonatomic, strong, readonly) NSString *deviceId;
+@property (nonatomic, strong, readonly) NSString *instanceName;
+@property (nonatomic ,strong, readonly) NSString *propertyListPath;
 @property (nonatomic, assign) BOOL optOut;
 
 /*!
@@ -82,6 +85,8 @@
 
 + (Amplitude *)instance;
 
++ (Amplitude *)instanceWithName:(NSString*) instanceName;
+
 /*!
  @method
 
@@ -115,7 +120,8 @@
  Tracks an event
 
  @param eventType                The name of the event you wish to track.
- @param eventProperties          You can attach additional data to any event by passing a NSDictionary object.
+ @param eventProperties          You can attach additional data to any event by passing a NSDictionary object with property: value pairs.
+ @param groups                   You can specify event-level groups for this user by passing a NSDictionary object with groupType: groupName pairs. Note the keys need to be strings, and the values can either be strings or an array of strings.
  @param outOfSession             If YES, will track the event as out of session. Useful for push notification events.
 
  @discussion
@@ -123,14 +129,15 @@
  After calling logEvent in your app, you will immediately see data appear on the Amplitude Website.
 
  It's important to think about what types of events you care about as a developer. You should aim to track
- between 10 and 100 types of events within your app. Common event types are different screens within the app,
+ between 50 and 200 types of events within your app. Common event types are different screens within the app,
  actions the user initiates (such as pressing a button), and events you want the user to complete
  (such as filling out a form, completing a level, or making a payment).
- Contact us if you want assistance determining what would be best for you to track. (contact@amplitude.com)
  */
 - (void)logEvent:(NSString*) eventType;
 - (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties;
 - (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties outOfSession:(BOOL) outOfSession;
+- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties withGroups:(NSDictionary*) groups;
+- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties withGroups:(NSDictionary*) groups outOfSession:(BOOL) outOfSession;
 
 /*!
  @method
@@ -151,6 +158,24 @@
 - (void)logRevenue:(NSNumber*) amount;
 - (void)logRevenue:(NSString*) productIdentifier quantity:(NSInteger) quantity price:(NSNumber*) price;
 - (void)logRevenue:(NSString*) productIdentifier quantity:(NSInteger) quantity price:(NSNumber*) price receipt:(NSData*) receipt;
+
+/*!
+ @method
+ 
+ @abstract
+ Tracks revenue - API v2.
+ 
+ @param AMPRevenue object       revenue object contains all revenue information
+ 
+ @discussion
+ To track revenue from a user, create an AMPRevenue object each time the user generates revenue, and set the revenue properties (productIdentifier, price, quantity).
+ logRevenuev2: takes in an AMPRevenue object. This allows us to automatically display data relevant to revenue on the Amplitude website, including average
+ revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and
+ daily/weekly/monthly cohorts.
+ 
+ For validating revenue, make sure the receipt data is set on the AMPRevenue object.
+ */
+- (void)logRevenueV2:(AMPRevenue*) revenue;
 
 /*!
  @method
@@ -189,6 +214,7 @@
  Adds properties that are tracked on the user level.
 
  @param userProperties          An NSDictionary containing any additional data to be tracked.
+ @param replace                 This is deprecated. In earlier versions of this SDK, this replaced the in-memory userProperties dictionary with the input, but now userProperties are no longer stored in memory.
 
  @discussion
  Property keys must be <code>NSString</code> objects and values must be serializable.
@@ -205,6 +231,17 @@
  */
 
 - (void)clearUserProperties;
+
+/*!
+ @method
+
+ @abstract
+ Adds a user to a group or groups. You need to specify a groupType and groupName(s). For example you can group people by their organization. In that case groupType is "orgId", and groupName would be the actual ID(s). groupName can be a string or an array of strings to indicate a user in multiple groups. You can also call setGroup multiple times with different groupTypes to track multiple types of groups (up to 5 per app). Note: this will also set groupType: groupName as a user property.
+ @param groupType               You need to specify a group type (for example "orgId").
+ @param groupName               The value for the group name, can be a string or an array of strings, (for example for groupType orgId, the groupName would be the actual id number, like 15).
+ */
+
+- (void)setGroup:(NSString*) groupType groupName:(NSObject*) groupName;
 
 /*!
  @method
@@ -241,7 +278,7 @@
  @param enabled                  Whether tracking opt out should be enabled or disabled.
 
  @discussion
- If the user wants to opt out of all tracking, use this method to enable opt out for them. Once opt out is enabled, no events will be saved locally or sent to the server. Calling this method again with enabled set to false will turn tracking back on for the user.
+ If the user wants to opt out of all tracking, use this method to enable opt out for them. Once opt out is enabled, no events will be saved locally or sent to the server. Calling this method again with enabled set to NO will turn tracking back on for the user.
  */
 - (void)setOptOut:(BOOL)enabled;
 
@@ -254,8 +291,7 @@
  @param offline                  Whether logged events should be sent to Amplitude servers.
 
  @discussion
- If you want to stop logged events from being sent to Amplitude severs, use this method to set the client to offline. Once offline is enabled, logged events will not be sent to the server until offline is disabled. Calling this method again with offline set to false will allow events to be sent to server
-     and the client will attempt to send events that have been queued while offline.
+ If you want to stop logged events from being sent to Amplitude severs, use this method to set the client to offline. Once offline is enabled, logged events will not be sent to the server until offline is disabled. Calling this method again with offline set to NO will allow events to be sent to server and the client will attempt to send events that have been queued while offline.
  */
 - (void)setOffline:(BOOL)offline;
 
@@ -325,6 +361,18 @@
  The deviceId is an identifier used by Amplitude to determine unique users when no userId has been set.
  */
 - (NSString*)getDeviceId;
+
+/*!
+ @method
+
+ @abstract
+ Returns the current sessionId
+
+ @discussion
+ The sessionId is an identifier used by Amplitude to group together events performed during the same session.
+ */
+- (long long)getSessionId;
+
 
 
 #pragma mark - Deprecated methods

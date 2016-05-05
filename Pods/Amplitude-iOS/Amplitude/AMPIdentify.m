@@ -22,7 +22,7 @@
 
 - (id)init
 {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         _userPropertyOperations = [[NSMutableDictionary alloc] init];
         _userProperties = [[NSMutableSet alloc] init];
     }
@@ -66,6 +66,12 @@
         return self;
     }
     [_userPropertyOperations setObject:@"-" forKey:AMP_OP_CLEAR_ALL];
+    return self;
+}
+
+- (AMPIdentify*)prepend:(NSString*) property value:(NSObject*) value
+{
+    [self addToUserProperties:AMP_OP_PREPEND property:property value:value];
     return self;
 }
 
