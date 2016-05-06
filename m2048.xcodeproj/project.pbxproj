@@ -36,7 +36,7 @@
 		24C4517318E140AE0001FCFD /* M2SettingsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C4517218E140AE0001FCFD /* M2SettingsDetailViewController.m */; };
 		24C4518118E265390001FCFD /* M2Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C4518018E265390001FCFD /* M2Overlay.m */; };
 		60C9F2EC1CDC14D200BC2CD0 /* GTM-N5FRGJ in Resources */ = {isa = PBXBuildFile; fileRef = 60C9F2EB1CDC14D200BC2CD0 /* GTM-N5FRGJ */; };
-		60C9F2EF1CDC198100BC2CD0 /* AmplitudeGTMHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C9F2EE1CDC198100BC2CD0 /* AmplitudeGTMHandlers.m */; };
+		60C9F2EF1CDC198100BC2CD0 /* AmplitudeGTMHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C9F2EE1CDC198100BC2CD0 /* AmplitudeGTMHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +96,8 @@
 		24C4517F18E265390001FCFD /* M2Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M2Overlay.h; sourceTree = "<group>"; };
 		24C4518018E265390001FCFD /* M2Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M2Overlay.m; sourceTree = "<group>"; };
 		60C9F2EB1CDC14D200BC2CD0 /* GTM-N5FRGJ */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTM-N5FRGJ"; sourceTree = "<group>"; };
-		60C9F2ED1CDC18E100BC2CD0 /* AmplitudeGTMHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplitudeGTMHandlers.h; sourceTree = "<group>"; };
-		60C9F2EE1CDC198100BC2CD0 /* AmplitudeGTMHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplitudeGTMHandlers.m; sourceTree = "<group>"; };
+		60C9F2ED1CDC18E100BC2CD0 /* AmplitudeGTMHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmplitudeGTMHandler.h; sourceTree = "<group>"; };
+		60C9F2EE1CDC198100BC2CD0 /* AmplitudeGTMHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmplitudeGTMHandler.m; sourceTree = "<group>"; };
 		66737970F26BA9ED648F25FB /* Pods-m2048.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m2048.debug.xcconfig"; path = "Pods/Target Support Files/Pods-m2048/Pods-m2048.debug.xcconfig"; sourceTree = "<group>"; };
 		9FBDFA6EC43B1E0EF8F8DFEA /* libPods-m2048.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-m2048.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3D8E59A564A0CB5245C664 /* Pods-m2048.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m2048.release.xcconfig"; path = "Pods/Target Support Files/Pods-m2048/Pods-m2048.release.xcconfig"; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 		2443DC5D18D662CA00C920C1 /* m2048 */ = {
 			isa = PBXGroup;
 			children = (
-				60C9F2ED1CDC18E100BC2CD0 /* AmplitudeGTMHandlers.h */,
-				60C9F2EE1CDC198100BC2CD0 /* AmplitudeGTMHandlers.m */,
+				60C9F2ED1CDC18E100BC2CD0 /* AmplitudeGTMHandler.h */,
+				60C9F2EE1CDC198100BC2CD0 /* AmplitudeGTMHandler.m */,
 				2443DC6618D662CA00C920C1 /* M2AppDelegate.h */,
 				2443DC6718D662CA00C920C1 /* M2AppDelegate.m */,
 				2443DC6918D662CA00C920C1 /* Main.storyboard */,
@@ -459,7 +459,7 @@
 				24C4515E18D6DC740001FCFD /* M2Grid.m in Sources */,
 				24C4518118E265390001FCFD /* M2Overlay.m in Sources */,
 				2443DCAF18D6C18400C920C1 /* M2Tile.m in Sources */,
-				60C9F2EF1CDC198100BC2CD0 /* AmplitudeGTMHandlers.m in Sources */,
+				60C9F2EF1CDC198100BC2CD0 /* AmplitudeGTMHandler.m in Sources */,
 				2443DCA018D6647000C920C1 /* M2SettingsViewController.m in Sources */,
 				24C4517018DFF10B0001FCFD /* M2ScoreView.m in Sources */,
 				2443DCA318D6649500C920C1 /* M2Theme.m in Sources */,

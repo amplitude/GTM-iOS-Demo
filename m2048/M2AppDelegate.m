@@ -11,7 +11,7 @@
 #import "TAGContainer.h"
 #import "TAGContainerOpener.h"
 #import "TAGManager.h"
-#import "AmplitudeGTMHandlers.h"
+#import "AmplitudeGTMHandler.h"
 
 @implementation M2AppDelegate
 
@@ -29,9 +29,9 @@
 
     self.container = [future get];
     [self.container refresh];
-    [self.container registerFunctionCallTagHandler:[[AmplitudeGTMLogEventHandler alloc] init] forTag:kAmplitudeGTMLogEventHandlerTag];
-    [self.container registerFunctionCallTagHandler:[[AmplitudeGTMSetUserIdHandler alloc] init] forTag:kAmplitudeGTMSetUserIdHandlerTag];
-    [self.container registerFunctionCallTagHandler:[[AmplitudeGTMSetUserPropertiesHandler alloc] init] forTag:kAmplitudeGTMSetUserPropertiesHandlerTag];
+    [self.container registerFunctionCallTagHandler:[AmplitudeGTMHandler instance] forTag:kAmplitudeGTMLogEventHandlerTag];
+    [self.container registerFunctionCallTagHandler:[AmplitudeGTMHandler instance] forTag:kAmplitudeGTMSetUserIdHandlerTag];
+    [self.container registerFunctionCallTagHandler:[AmplitudeGTMHandler instance] forTag:kAmplitudeGTMSetUserPropertiesHandlerTag];
 
     // Add action for remind later.
     UIMutableUserNotificationAction *laterAction = [[UIMutableUserNotificationAction alloc] init];
