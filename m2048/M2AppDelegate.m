@@ -11,22 +11,27 @@
 #import "TAGContainer.h"
 #import "TAGContainerOpener.h"
 #import "TAGManager.h"
-
-@interface M2AppDelegate ()<TAGContainerOpenerNotifier>
-@end
+#import "AmplitudeGTMHandlers.h"
 
 @implementation M2AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Amplitude instance].trackingSessionEvents = YES;
+    [Amplitude instance].minTimeBetweenSessionsMillis = 5000;
+    [[Amplitude instance] initializeApiKey:@"4a58de1c5f10b70eefe553300a81eaf1"];
+
     self.tagManager = [TAGManager instance];
     [self.tagManager.logger setLogLevel:kTAGLoggerLogLevelVerbose];
 
     // open Amplitude-iOS GTM container
-    [TAGContainerOpener openContainerWithId:@"GTM-N5FRGJ" tagManager:self.tagManager openType:kTAGOpenTypePreferFresh timeout:nil notifier:self];
+    id<TAGContainerFuture> future = [TAGContainerOpener openContainerWithId:@"GTM-N5FRGJ" tagManager:self.tagManager openType:kTAGOpenTypePreferNonDefault timeout:nil];
 
-    [Amplitude instance].trackingSessionEvents = YES;
-    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
+    self.container = [future get];
+    [self.container refresh];
+    [self.container registerFunctionCallTagHandler:[[AmplitudeGTMLogEventHandler alloc] init] forTag:kAmplitudeGTMLogEventHandlerTag];
+    [self.container registerFunctionCallTagHandler:[[AmplitudeGTMSetUserIdHandler alloc] init] forTag:kAmplitudeGTMSetUserIdHandlerTag];
+    [self.container registerFunctionCallTagHandler:[[AmplitudeGTMSetUserPropertiesHandler alloc] init] forTag:kAmplitudeGTMSetUserPropertiesHandlerTag];
 
     // Add action for remind later.
     UIMutableUserNotificationAction *laterAction = [[UIMutableUserNotificationAction alloc] init];
@@ -56,15 +61,6 @@
     }
 
     return YES;
-}
-
-// TAGContainerOpenNotifier callback
-- (void)containerAvailable:(TAGContainer *)container {
-    // Note that containerAvailable may be called on any thread, so you may need to dispatch
-    // back to main thread
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.container = container;
-    });
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -128,8 +124,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 forRemoteNotification:(NSDictionary *)notification completionHandler:(void(^)())completionHandler
 {
     NSLog(@"Received push notification: %@, identifier: %@", notification, identifier); // iOS 8
-    [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104"];
-    [[Amplitude instance] logEvent:@"Opened Remote Notification"];
+    [[Amplitude instance] initializeApiKey:@"4a58de1c5f10b70eefe553300a81eaf1"];
 
     completionHandler();
 }
@@ -139,8 +134,7 @@ forLocalNotification:(UILocalNotification *)notification completionHandler:(void
 {
     if ([notification.category isEqualToString:@"reminder_category_id"])
     {
-        [[Amplitude instance] initializeApiKey:@"cd6312957e01361e6c876290f26d9104" userId:nil];
-        [[Amplitude instance] logEvent:@"Local Notification Action" withEventProperties:@{@"Action": identifier}];
+        [[Amplitude instance] initializeApiKey:@"4a58de1c5f10b70eefe553300a81eaf1" userId:nil];
 
         if ([identifier isEqualToString:@"later_action_id"])
         {

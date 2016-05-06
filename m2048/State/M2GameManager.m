@@ -11,8 +11,9 @@
 #import "M2Tile.h"
 #import "M2Scene.h"
 #import "M2ViewController.h"
-#import "Amplitude.h"
-#import "AMPIdentify.h"
+
+#import "TAGManager.h"
+#import "TAGDataLayer.h"
 
 /**
  * Helper function that checks the termination condition of either counting up or down.
@@ -24,34 +25,34 @@
  * @return YES if the counting is still in progress. NO if it should terminate.
  */
 BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
-  return countUp ? value < upper : value > lower;
+    return countUp ? value < upper : value > lower;
 }
 
 
 @implementation M2GameManager {
-  /** True if game over. */
-  BOOL _over;
-  
-  /** True if won game. */
-  BOOL _won;
-  
-  /** True if user chooses to keep playing after winning. */
-  BOOL _keepPlaying;
+    /** True if game over. */
+    BOOL _over;
 
-  /** The current level. */
-  NSInteger _level;
+    /** True if won game. */
+    BOOL _won;
 
-  /** The current score. */
-  NSInteger _score;
-  
-  /** The points earned by the user in the current round. */
-  NSInteger _pendingScore;
-  
-  /** The grid on which everything happens. */
-  M2Grid *_grid;
+    /** True if user chooses to keep playing after winning. */
+    BOOL _keepPlaying;
 
-  /** The display link to add tiles after removing all existing tiles. */
-  CADisplayLink *_addTileDisplayLink;
+    /** The current level. */
+    NSInteger _level;
+
+    /** The current score. */
+    NSInteger _score;
+
+    /** The points earned by the user in the current round. */
+    NSInteger _pendingScore;
+
+    /** The grid on which everything happens. */
+    M2Grid *_grid;
+
+    /** The display link to add tiles after removing all existing tiles. */
+    CADisplayLink *_addTileDisplayLink;
 }
 
 
@@ -59,34 +60,35 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 
 - (void)startNewSessionWithScene:(M2Scene *)scene
 {
-  [[Amplitude instance] logEvent:@"Start Game"];
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    [dataLayer push:@{@"event": @"logEvent", @"eventType": @"Start Game"}];
 
-  if (_grid) [_grid removeAllTilesAnimated:NO];
-  if (!_grid || _grid.dimension != GSTATE.dimension) {
-    _grid = [[M2Grid alloc] initWithDimension:GSTATE.dimension];
-    _grid.scene = scene;
-  }
-  
-  [scene loadBoardWithGrid:_grid];
+    if (_grid) [_grid removeAllTilesAnimated:NO];
+    if (!_grid || _grid.dimension != GSTATE.dimension) {
+        _grid = [[M2Grid alloc] initWithDimension:GSTATE.dimension];
+        _grid.scene = scene;
+    }
 
-  // Set the initial state for the game.
-  _score = 0; _over = NO; _won = NO; _keepPlaying = NO;
+    [scene loadBoardWithGrid:_grid];
 
-  // Existing tile removal is async and happens in the next screen refresh, so we'd wait a bit.
-  _addTileDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(addTwoRandomTiles)];
-  [_addTileDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    // Set the initial state for the game.
+    _score = 0; _over = NO; _won = NO; _keepPlaying = NO;
+
+    // Existing tile removal is async and happens in the next screen refresh, so we'd wait a bit.
+    _addTileDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(addTwoRandomTiles)];
+    [_addTileDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 }
 
 
 - (void)addTwoRandomTiles
 {
-  // If the scene only has one child (the board), we can proceed with adding new tiles
-  // since all old ones are removed. After adding new tiles, remove the displaylink.
-  if (_grid.scene.children.count <= 1) {
-    [_grid insertTileAtRandomAvailablePositionWithDelay:NO];
-    [_grid insertTileAtRandomAvailablePositionWithDelay:NO];
-    [_addTileDisplayLink invalidate];
-  }
+    // If the scene only has one child (the board), we can proceed with adding new tiles
+    // since all old ones are removed. After adding new tiles, remove the displaylink.
+    if (_grid.scene.children.count <= 1) {
+        [_grid insertTileAtRandomAvailablePositionWithDelay:NO];
+        [_grid insertTileAtRandomAvailablePositionWithDelay:NO];
+        [_addTileDisplayLink invalidate];
+    }
 }
 
 
@@ -94,141 +96,137 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 
 - (void)moveToDirection:(M2Direction)direction
 {
-  __block M2Tile *tile = nil;
-  __block NSInteger nextLevel = _level;
-  
-  // Remember that the coordinate system of SpriteKit is the reverse of that of UIKit.
-  BOOL reverse = direction == M2DirectionUp || direction == M2DirectionRight;
-  NSInteger unit = reverse ? 1 : -1;
+    __block M2Tile *tile = nil;
+    __block NSInteger nextLevel = _level;
 
-  if (direction == M2DirectionUp || direction == M2DirectionDown) {
-    [_grid forEach:^(M2Position position) {
-      if ((tile = [_grid tileAtPosition:position])) {
-        // Find farthest position to move to.
-        NSInteger target = position.x;
-        for (NSInteger i = position.x + unit; iterate(i, reverse, _grid.dimension, -1); i += unit) {
-          M2Tile *t = [_grid tileAtPosition:M2PositionMake(i, position.y)];
-          
-          // Empty cell; we can move at least to here.
-          if (!t) target = i;
-          
-          // Try to merge to the tile in the cell.
-          else {
-            NSInteger level = 0;
-            
-            if (GSTATE.gameType == M2GameTypePowerOf3) {
-              M2Position further = M2PositionMake(i + unit, position.y);
-              M2Tile *ft = [_grid tileAtPosition:further];
-              if (ft) {
-                level = [tile merge3ToTile:t andTile:ft];
-              }
-            } else {
-              level = [tile mergeToTile:t];
-            }
-            
-            if (level) {
-              nextLevel = MAX(level, nextLevel);
-              target = position.x;
-              _pendingScore = [GSTATE valueForLevel:level];
-            }
+    // Remember that the coordinate system of SpriteKit is the reverse of that of UIKit.
+    BOOL reverse = direction == M2DirectionUp || direction == M2DirectionRight;
+    NSInteger unit = reverse ? 1 : -1;
 
-            break;
-          }
-        }
-        
-        // The current tile is movable.
-        if (target != position.x) {
-          [tile moveToCell:[_grid cellAtPosition:M2PositionMake(target, position.y)]];
-          _pendingScore++;
-        }
-      }
-    } reverseOrder:reverse];
-  }
-  
-  else {
-    [_grid forEach:^(M2Position position) {
-      if ((tile = [_grid tileAtPosition:position])) {
-        NSInteger target = position.y;
-        for (NSInteger i = position.y + unit; iterate(i, reverse, _grid.dimension, -1); i += unit) {
-          M2Tile *t = [_grid tileAtPosition:M2PositionMake(position.x, i)];
-          
-          if (!t) target = i;
+    if (direction == M2DirectionUp || direction == M2DirectionDown) {
+        [_grid forEach:^(M2Position position) {
+            if ((tile = [_grid tileAtPosition:position])) {
+                // Find farthest position to move to.
+                NSInteger target = position.x;
+                for (NSInteger i = position.x + unit; iterate(i, reverse, _grid.dimension, -1); i += unit) {
+                    M2Tile *t = [_grid tileAtPosition:M2PositionMake(i, position.y)];
 
-          else {
-            NSInteger level = 0;
-            
-            if (GSTATE.gameType == M2GameTypePowerOf3) {
-              M2Position further = M2PositionMake(position.x, i + unit);
-              M2Tile *ft = [_grid tileAtPosition:further];
-              if (ft) {
-                level = [tile merge3ToTile:t andTile:ft];
-              }
-            } else {
-              level = [tile mergeToTile:t];
+                    // Empty cell; we can move at least to here.
+                    if (!t) target = i;
+
+                    // Try to merge to the tile in the cell.
+                    else {
+                        NSInteger level = 0;
+
+                        if (GSTATE.gameType == M2GameTypePowerOf3) {
+                            M2Position further = M2PositionMake(i + unit, position.y);
+                            M2Tile *ft = [_grid tileAtPosition:further];
+                            if (ft) {
+                                level = [tile merge3ToTile:t andTile:ft];
+                            }
+                        } else {
+                            level = [tile mergeToTile:t];
+                        }
+
+                        if (level) {
+                            nextLevel = MAX(level, nextLevel);
+                            target = position.x;
+                            _pendingScore = [GSTATE valueForLevel:level];
+                        }
+
+                        break;
+                    }
+                }
+
+                // The current tile is movable.
+                if (target != position.x) {
+                    [tile moveToCell:[_grid cellAtPosition:M2PositionMake(target, position.y)]];
+                    _pendingScore++;
+                }
             }
-            
-            if (level) {
-              nextLevel = MAX(level, nextLevel);
-              target = position.y;
-              _pendingScore = [GSTATE valueForLevel:level];
-            }
-            
-            break;
-          }
-        }
-        
-        // The current tile is movable.
-        if (target != position.y) {
-          [tile moveToCell:[_grid cellAtPosition:M2PositionMake(position.x, target)]];
-          _pendingScore++;
-        }
-      }
-    } reverseOrder:reverse];
-  }
-  
-  // Cannot move to the given direction. Abort.
-  if (!_pendingScore) return;
-  
-  // Commit tile movements.
-  [_grid forEach:^(M2Position position) {
-    M2Tile *tile = [_grid tileAtPosition:position];
-    if (tile) {
-      [tile commitPendingActions];
-      if (tile.level >= GSTATE.winningLevel) _won = YES;
+        } reverseOrder:reverse];
     }
-  } reverseOrder:reverse];
-  
-  // Increment score.
-  [self materializePendingScore];
 
-  // Update current level.
-  if (_level != nextLevel) {
-    AMPIdentify *identify = [[AMPIdentify identify] set:@"level" value: [NSNumber numberWithUnsignedInteger:_level]];
-    [identify append:@"list" value:@"value"];
-    [[Amplitude instance] identify:identify];
-    [[Amplitude instance] logEvent:@"Level Up" withEventProperties:@{
-      @"score": [NSNumber numberWithUnsignedInteger:_score],
-      @"level": [NSNumber numberWithUnsignedInteger:_level]
-    }];
-  }
-  _level = nextLevel;
+    else {
+        [_grid forEach:^(M2Position position) {
+            if ((tile = [_grid tileAtPosition:position])) {
+                NSInteger target = position.y;
+                for (NSInteger i = position.y + unit; iterate(i, reverse, _grid.dimension, -1); i += unit) {
+                    M2Tile *t = [_grid tileAtPosition:M2PositionMake(position.x, i)];
 
-  // Check post-move status.
-  if (!_keepPlaying && _won) {
-    // We set `keepPlaying` to YES. If the user decides not to keep playing,
-    // we will be starting a new game, so the current state is no longer relevant.
-    _keepPlaying = YES;
-    [_grid.scene.controller endGame:YES];
-  }
-    
-  // Add one more tile to the grid.
-  [_grid insertTileAtRandomAvailablePositionWithDelay:YES];
-  if (GSTATE.dimension == 5 && GSTATE.gameType == M2GameTypePowerOf2)
+                    if (!t) target = i;
+
+                    else {
+                        NSInteger level = 0;
+
+                        if (GSTATE.gameType == M2GameTypePowerOf3) {
+                            M2Position further = M2PositionMake(position.x, i + unit);
+                            M2Tile *ft = [_grid tileAtPosition:further];
+                            if (ft) {
+                                level = [tile merge3ToTile:t andTile:ft];
+                            }
+                        } else {
+                            level = [tile mergeToTile:t];
+                        }
+
+                        if (level) {
+                            nextLevel = MAX(level, nextLevel);
+                            target = position.y;
+                            _pendingScore = [GSTATE valueForLevel:level];
+                        }
+
+                        break;
+                    }
+                }
+
+                // The current tile is movable.
+                if (target != position.y) {
+                    [tile moveToCell:[_grid cellAtPosition:M2PositionMake(position.x, target)]];
+                    _pendingScore++;
+                }
+            }
+        } reverseOrder:reverse];
+    }
+
+    // Cannot move to the given direction. Abort.
+    if (!_pendingScore) return;
+
+    // Commit tile movements.
+    [_grid forEach:^(M2Position position) {
+        M2Tile *tile = [_grid tileAtPosition:position];
+        if (tile) {
+            [tile commitPendingActions];
+            if (tile.level >= GSTATE.winningLevel) _won = YES;
+        }
+    } reverseOrder:reverse];
+
+    // Increment score.
+    [self materializePendingScore];
+
+    // Update current level.
+    if (_level != nextLevel) {
+        TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+        [dataLayer push:@{@"event": @"logEvent", @"eventType": @"Level Up", @"eventProperties": @{@"score": [NSNumber numberWithUnsignedInteger:_score], @"level": [NSNumber numberWithUnsignedInteger:_level]}}];
+
+    }
+    _level = nextLevel;
+
+    // Check post-move status.
+    if (!_keepPlaying && _won) {
+        // We set `keepPlaying` to YES. If the user decides not to keep playing,
+        // we will be starting a new game, so the current state is no longer relevant.
+        _keepPlaying = YES;
+        [_grid.scene.controller endGame:YES];
+    }
+
+    // Add one more tile to the grid.
     [_grid insertTileAtRandomAvailablePositionWithDelay:YES];
-    
-  if (![self movesAvailable]) {
-    [_grid.scene.controller endGame:NO];
-  }
+    if (GSTATE.dimension == 5 && GSTATE.gameType == M2GameTypePowerOf2)
+        [_grid insertTileAtRandomAvailablePositionWithDelay:YES];
+
+    if (![self movesAvailable]) {
+        [_grid.scene.controller endGame:NO];
+    }
 }
 
 
@@ -236,9 +234,9 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 
 - (void)materializePendingScore
 {
-  _score += _pendingScore;
-  _pendingScore = 0;
-  [_grid.scene.controller updateScore:_score];
+    _score += _pendingScore;
+    _pendingScore = 0;
+    [_grid.scene.controller updateScore:_score];
 }
 
 
@@ -247,7 +245,7 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
 /**
  * Whether there are moves available.
  *
- * A move is available if either there is an empty cell, or there are adjacent matching cells. 
+ * A move is available if either there is an empty cell, or there are adjacent matching cells.
  * The check for matching cells is more expensive, so it is only performed when there is no
  * available cell.
  *
@@ -255,7 +253,7 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
  */
 - (BOOL)movesAvailable
 {
-  return [_grid hasAvailableCells] || [self adjacentMatchesAvailable];
+    return [_grid hasAvailableCells] || [self adjacentMatchesAvailable];
 }
 
 - (NSUInteger)currentLevel
@@ -274,34 +272,34 @@ BOOL iterate(NSInteger value, BOOL countUp, NSInteger upper, NSInteger lower) {
  */
 - (BOOL)adjacentMatchesAvailable
 {
-  for (NSInteger i = 0; i < _grid.dimension; i++) {
-    for (NSInteger j = 0; j < _grid.dimension; j++) {
-      // Due to symmetry, we only need to check for tiles to the right and down.
-      M2Tile *tile = [_grid tileAtPosition:M2PositionMake(i, j)];
-      
-      // Continue with next iteration if the tile does not exist. Note that this means that
-      // the cell is empty. For our current usage, it will never happen. It is only in place
-      // in case we want to use this function by itself.
-      if (!tile) continue;
-      
-      if (GSTATE.gameType == M2GameTypePowerOf3) {
-        if (([tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i + 1, j)]] &&
-             [tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i + 2, j)]]) ||
-            ([tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i, j + 1)]] &&
-             [tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i, j + 2)]])) {
-          return YES;
+    for (NSInteger i = 0; i < _grid.dimension; i++) {
+        for (NSInteger j = 0; j < _grid.dimension; j++) {
+            // Due to symmetry, we only need to check for tiles to the right and down.
+            M2Tile *tile = [_grid tileAtPosition:M2PositionMake(i, j)];
+            
+            // Continue with next iteration if the tile does not exist. Note that this means that
+            // the cell is empty. For our current usage, it will never happen. It is only in place
+            // in case we want to use this function by itself.
+            if (!tile) continue;
+            
+            if (GSTATE.gameType == M2GameTypePowerOf3) {
+                if (([tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i + 1, j)]] &&
+                     [tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i + 2, j)]]) ||
+                    ([tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i, j + 1)]] &&
+                     [tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i, j + 2)]])) {
+                        return YES;
+                    }
+            } else {
+                if ([tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i + 1, j)]] ||
+                    [tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i, j + 1)]]) {
+                    return YES;
+                }
+            }
         }
-      } else {
-        if ([tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i + 1, j)]] ||
-            [tile canMergeWithTile:[_grid tileAtPosition:M2PositionMake(i, j + 1)]]) {
-          return YES;
-        }
-      }
     }
-  }
-  
-  // Nothing is found.
-  return NO;
+    
+    // Nothing is found.
+    return NO;
 }
 
 @end
