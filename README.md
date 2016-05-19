@@ -1,4 +1,4 @@
-Demo App demonstrating Amplitude iOS SDK integration with Google Tag Manager
+Demo App - Amplitude iOS SDK with Google Tag Manager
 ================
 
 GTM integration on iOS requires installing our [native SDK](https://github.com/amplitude/amplitude-ios#setup), and then setting up GTM to trigger SDK functions via a custom function handler class that bridges GTM and our native SDKs. This demo apps is a proof of concept, with just the 3 most important functionalities implemented (logging events, setting user Id, and setting user properties) in the AmplitudeGTMHandler class. Here is our GTM setup:
