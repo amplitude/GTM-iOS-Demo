@@ -7,18 +7,18 @@ Note, if you are running this demo app locally, you will need to install Cocoapo
 
 Here is our GTM setup:
 
-###User-Defined Variables (all Data Layer Variables):###
+### User-Defined Variables (all Data Layer Variables): ###
 * eventProperties
 * eventType
 * userId
 * userProperties
 
-###Triggers:###
+### Triggers: ###
 * logEvent: Event equals 'logEvent'
 * setUserId: Event equals 'setUserId'
 * setUserProperties: Event equals 'setUserProperties'
 
-###Tags:###
+### Tags: ###
 
 logEvent
 * type: Function Call
@@ -46,4 +46,5 @@ GTM iOS Demo: https://github.com/amplitude/GTM-iOS-Demo
 * Example of setting userId and userProperties: https://github.com/amplitude/GTM-iOS-Demo/blob/master/m2048/Controller/M2ViewController.m#L40-L43
 * Example of logging an event: https://github.com/amplitude/GTM-iOS-Demo/blob/master/m2048/State/M2GameManager.m#L208-L209
 
+### Note ###
 A lot of the other functionality from the SDK hasn't been implemented (such as logging revenue, user property operations, etc), but this proof of concept demonstrates that GTM integration with Amplitude is possible, and events are being logged with the correct user Ids. Implementing the other functionalities would follow a similar pattern.
